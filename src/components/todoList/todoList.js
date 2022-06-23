@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoItem from '../todoItem';
+
+const fakeServerTodosData = [
+    { id: 100, title: 'Learn React' },
+    { id: 100, title: 'Learn TypeScript' },
+];
 
 const TodoList = ({ username = 'No user', children, ...rest }) => {
     const [count, setCount] = useState(0);
     const [todoTitle, setTodoTitle] = useState('');
     const [todos, setTodos] = useState([]);
+
+    useEffect(() => {
+        const getFakeServerTodosData = async () => {
+            setTodos(fakeServerTodosData);
+        };
+
+        getFakeServerTodosData();
+    }, []);
 
     const handleAddTodo = () => {
         setCount(count + 1);
