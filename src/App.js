@@ -4,7 +4,9 @@ import './App.css';
 const App = () => {
     return (
         <div className="App">
-            <TodoList />
+            <TodoList>
+                <h2>Other react components</h2>
+            </TodoList>
         </div>
     );
 };
