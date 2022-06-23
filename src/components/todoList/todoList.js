@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TodoItem from '../todoItem';
 
 const TodoList = ({ username = 'No user', children, ...rest }) => {
     const [count, setCount] = useState(0);
@@ -36,7 +37,7 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
 
             <ul>
                 {todos.map(({ id, title }) => (
-                    <li key={id}>{title}</li>
+                    <TodoItem key={id} title={title} />
                 ))}
             </ul>
 
