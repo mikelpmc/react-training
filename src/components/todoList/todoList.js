@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import TodoItem from '../todoItem';
 
 const fakeServerTodosData = [
@@ -10,6 +10,7 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
     const [count, setCount] = useState(0);
     const [todoTitle, setTodoTitle] = useState('');
     const [todos, setTodos] = useState([]);
+    const inputRef = useRef();
 
     useEffect(() => {
         const getFakeServerTodosData = async () => {
@@ -20,16 +21,19 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
     }, []);
 
     const handleAddTodo = () => {
-        setCount(count + 1);
-        const updatedTodos = [
-            ...todos,
-            {
-                id: count,
-                title: todoTitle,
-            },
-        ];
-        setTodos(updatedTodos);
-        setTodoTitle('');
+        if (todoTitle) {
+            setCount(count + 1);
+            const updatedTodos = [
+                ...todos,
+                {
+                    id: count,
+                    title: todoTitle,
+                },
+            ];
+            setTodos(updatedTodos);
+            setTodoTitle('');
+            inputRef?.current?.focus();
+        }
     };
 
     return (
@@ -39,6 +43,7 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
             </h1>
             <div>
                 <input
+                    ref={inputRef}
                     type="input"
                     value={todoTitle}
                     onChange={(ev) => setTodoTitle(ev.target.value)}
