@@ -35,11 +35,15 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
                 </button>
             </div>
 
-            <ul>
-                {todos.map(({ id, title }) => (
-                    <TodoItem key={id} title={title} />
-                ))}
-            </ul>
+            {todos.length ? (
+                <ul>
+                    {todos.map(({ id, title }) => (
+                        <TodoItem key={id} title={title} />
+                    ))}
+                </ul>
+            ) : (
+                <p>No ToDos yet! Add some.</p>
+            )}
 
             {children}
         </div>
