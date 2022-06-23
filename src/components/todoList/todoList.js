@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TodoList = ({ username = 'No user', children, role, onClick }) => {
+const TodoList = ({ username = 'No user', children, ...rest }) => {
     return (
-        <div role={role} onClick={onClick}>
+        <div {...rest}>
             <h1>{username} ToDo List</h1>
             {children}
         </div>
