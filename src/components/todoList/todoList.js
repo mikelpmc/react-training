@@ -1,9 +1,11 @@
 import React from 'react';
 
-const TodoList = (props) => {
+const TodoList = ({ username }) => {
+    // const { username } = props;
+
     return (
         <div>
-            <h1>{props.username} ToDo List</h1>
+            <h1>{username} ToDo List</h1>
         </div>
     );
 };
