@@ -1,43 +1,59 @@
 {
-  "name": "react-101",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "prettier"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1"
-  }
+	"name": "react-101",
+	"version": "0.0.1",
+	"license": "ISC",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "webpack --env production --progress",
+		"start": "webpack serve --port 6060 --env devServer",
+		"update": "rimraf node_modules & yarn --pure-lockfile",
+		"check-types": "tsc --noemit",
+		"eslint": "eslint .",
+		"stylelint": "stylelint ."
+	},
+	"dependencies": {
+		"core-js": "3.20.3",
+		"object-fit-images": "3.2.4",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"react-inlinesvg": "2.3.0",
+		"whatwg-fetch": "3.6.2"
+	},
+	"devDependencies": {
+		"@beezyinc/eslint-config-beezy": "2.0.3-dev.1",
+		"@types/react": "17.0.38",
+		"@types/react-dom": "17.0.11",
+		"@types/styled-components": "5.1.25",
+		"@typescript-eslint/eslint-plugin": "4.33.0",
+		"@typescript-eslint/parser": "4.33.0",
+		"css-loader": "^6.7.1",
+		"dotenv": "8.2.0",
+		"dotenv-webpack": "1.8.0",
+		"eslint": "7.32.0",
+		"eslint-config-airbnb-typescript": "16.1.0",
+		"eslint-config-prettier": "8.3.0",
+		"eslint-import-resolver-typescript": "2.5.0",
+		"eslint-plugin-import": "2.25.4",
+		"file-loader": "5.1.0",
+		"fork-ts-checker-webpack-plugin": "7.2.11",
+		"html-webpack-plugin": "5.5.0",
+		"identity-obj-proxy": "3.0.0",
+		"prettier": "2.5.1",
+		"style-loader": "^3.3.1",
+		"stylelint": "13.12.0",
+		"stylelint-config-idiomatic-order": "8.1.0",
+		"stylelint-config-recommended": "4.0.0",
+		"stylelint-config-styled-components": "0.1.1",
+		"stylelint-order": "4.1.0",
+		"ts-loader": "9.3.0",
+		"tsconfig-paths-webpack-plugin": "3.5.2",
+		"typescript": "4.6.4",
+		"webpack": "5.72.1",
+		"webpack-cli": "4.10.0",
+		"webpack-dev-server": "4.9.0"
+	},
+	"peerDependencies": {},
+	"sideEffects": false
 }

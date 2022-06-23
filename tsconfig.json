@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "target": "ES5",
+    "noImplicitAny": true,
+    "noImplicitUseStrict": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "baseUrl": "./",
+    "outDir": "build",
+    "paths": {
+      "@/*": ["./src/*"],
+    }
+  },
+  "include": [
+    "@types",
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
