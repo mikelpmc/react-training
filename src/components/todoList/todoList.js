@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 const TodoList = ({ username = 'No user', children, ...rest }) => {
     const [count, setCount] = useState(0);
+    const [todos, setTodos] = useState([
+        { title: 'Prepare workshop' },
+        { title: 'Learn React' },
+    ]);
 
     const handleClick = () => {
         setCount(count + 1);
@@ -15,6 +19,13 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
             <button type="button" onClick={handleClick}>
                 Add ToDo
             </button>
+
+            <ul>
+                {todos.map((todo) => (
+                    <li>{todo.title}</li>
+                ))}
+            </ul>
+
             {children}
         </div>
     );
