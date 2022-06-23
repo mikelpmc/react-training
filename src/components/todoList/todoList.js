@@ -10,6 +10,7 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
         const updatedTodos = [
             ...todos,
             {
+                id: count,
                 title: todoTitle,
             },
         ];
@@ -34,8 +35,8 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
             </div>
 
             <ul>
-                {todos.map((todo) => (
-                    <li>{todo.title}</li>
+                {todos.map(({ id, title }) => (
+                    <li key={id}>{title}</li>
                 ))}
             </ul>
 
