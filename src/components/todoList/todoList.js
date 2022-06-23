@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 
 const TodoList = ({ username = 'No user', children, ...rest }) => {
     const [count, setCount] = useState(0);
-    const [todos, setTodos] = useState([
-        { title: 'Prepare workshop' },
-        { title: 'Learn React' },
-    ]);
+    const [todoTitle, setTodoTitle] = useState('');
+    const [todos, setTodos] = useState([]);
 
-    const handleClick = () => {
+    const handleAddTodo = () => {
         setCount(count + 1);
+        const updatedTodos = [
+            ...todos,
+            {
+                title: todoTitle,
+            },
+        ];
+        setTodos(updatedTodos);
+        setTodoTitle('');
     };
 
     return (
@@ -16,9 +22,16 @@ const TodoList = ({ username = 'No user', children, ...rest }) => {
             <h1>
                 {username} ToDo List - {count}
             </h1>
-            <button type="button" onClick={handleClick}>
-                Add ToDo
-            </button>
+            <div>
+                <input
+                    type="input"
+                    value={todoTitle}
+                    onChange={(ev) => setTodoTitle(ev.target.value)}
+                />
+                <button type="button" onClick={handleAddTodo}>
+                    Add ToDo
+                </button>
+            </div>
 
             <ul>
                 {todos.map((todo) => (
