@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, HTMLAttributes } from 'react';
 import TodoItem from '../todoItem';
 import { Todo } from '../types/todo';
+import { StyledList } from './todoList.style';
 
 const fakeServerTodosData: Todo[] = [
 	{ id: 100, title: 'Learn React' },
@@ -55,11 +56,11 @@ const TodoList = ({ username = 'No user', children, ...rest }: TodoListProps): J
 			</div>
 
 			{todos.length ? (
-				<ul>
+				<StyledList>
 					{todos.map(({ id, title }) => (
 						<TodoItem key={id} title={title} />
 					))}
-				</ul>
+				</StyledList>
 			) : (
 				<p>No ToDos yet! Add some.</p>
 			)}
