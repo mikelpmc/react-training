@@ -1,10 +1,11 @@
+import { textEllipsis } from '@/styles/mixins/textEllipsis';
 import { rem, darken } from 'polished';
 import styled from 'styled-components';
 
 export const StyledItem = styled.li<{
 	$isDone: boolean;
 }>`
-	max-width: ${rem(300)};
+	width: ${rem(300)};
 	padding: ${rem(20)};
 	margin: 0 auto;
 
@@ -13,6 +14,8 @@ export const StyledItem = styled.li<{
 	&:hover {
 		background-color: ${darken(0.5, 'lightgrey')};
 	}
+
+	${textEllipsis()}
 `;
 
 export const StyledOtherItem = styled(StyledItem)`
