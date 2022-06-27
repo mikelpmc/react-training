@@ -13,3 +13,7 @@ export const StyledItem = styled.li<{
 		background-color: lightgrey;
 	}
 `;
+
+export const StyledOtherItem = styled(StyledItem)`
+	background-color: pink;
+`;
