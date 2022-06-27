@@ -6,7 +6,8 @@ export const StyledItem = styled.li<{
 	max-width: 300px;
 	padding: 20px;
 	margin: 0 auto;
-	text-decoration: ${({ $isDone }) => ($isDone ? 'line-through' : 'none')};
+
+	${({ $isDone }) => $isDone && 'text-decoration: line-through'};
 
 	&:hover {
 		background-color: lightgrey;
