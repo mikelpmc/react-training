@@ -5,7 +5,7 @@ const TodoItem = ({ title, ...rest }: { title: string }): JSX.Element => {
 	const [isDone, setIsDone] = useState(false);
 
 	return (
-		<StyledItem {...rest} $isDone={isDone} onClick={() => setIsDone(!isDone)}>
+		<StyledItem {...rest} role="button" aria-pressed={isDone} $isDone={isDone} onClick={() => setIsDone(!isDone)}>
 			{title}
 		</StyledItem>
 	);
