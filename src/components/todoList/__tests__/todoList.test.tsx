@@ -41,8 +41,10 @@ describe('Todo list', () => {
 		expect(screen.getByRole('listitem', { name: /todo test 2/i })).toBeInTheDocument();
 	});
 
-	it.skip('should add a new todo to the list', () => {
+	it('should add a new todo to the list', () => {
 		const todoTitle = 'new todo test';
+		const addTodoMocked = jest.fn();
+		useTodosQueryMocked.mockImplementation(() => ({ isLoading: false, data: [], addTodo: addTodoMocked }));
 
 		render(<TodoList>Test</TodoList>);
 
@@ -53,7 +55,7 @@ describe('Todo list', () => {
 		const addTodoButton = screen.getByRole('button', { name: /add todo/i });
 		userEvent.click(addTodoButton);
 
-		const newTodoItem = screen.getByText(/new todo test/i);
-		expect(newTodoItem).toBeInTheDocument();
+		expect(addTodoMocked).toHaveBeenCalledTimes(1);
+		expect(addTodoMocked).toHaveBeenCalledWith({ id: 0, title: 'new todo test' });
 	});
 });
