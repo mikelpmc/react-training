@@ -36,7 +36,13 @@ const TodoList = ({ username = 'No user', children, ...rest }: TodoListProps): J
 				{username} ToDo List - {count}
 			</h1>
 			<div>
-				<input ref={inputRef} type="input" value={todoTitle} onChange={ev => setTodoTitle(ev.target.value)} />
+				<input
+					ref={inputRef}
+					type="input"
+					value={todoTitle}
+					onChange={ev => setTodoTitle(ev.target.value)}
+					aria-label="add-todo-input"
+				/>
 				<button type="button" onClick={handleAddTodo}>
 					Add ToDo
 				</button>
@@ -47,7 +53,7 @@ const TodoList = ({ username = 'No user', children, ...rest }: TodoListProps): J
 			) : todos.length ? (
 				<StyledList>
 					{todos.map(({ id, title }) => (
-						<TodoItem key={id} title={title} />
+						<TodoItem key={id} title={title} aria-label={title} />
 					))}
 				</StyledList>
 			) : (

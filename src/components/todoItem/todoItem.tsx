@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { StyledItem } from './todoItem.style';
 
-const TodoItem = ({ title }: { title: string }): JSX.Element => {
+const TodoItem = ({ title, ...rest }: { title: string }): JSX.Element => {
 	const [isDone, setIsDone] = useState(false);
 
 	return (
-		<StyledItem $isDone={isDone} onClick={() => setIsDone(!isDone)}>
+		<StyledItem {...rest} $isDone={isDone} onClick={() => setIsDone(!isDone)}>
 			{title}
 		</StyledItem>
 	);
