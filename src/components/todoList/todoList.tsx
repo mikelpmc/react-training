@@ -1,12 +1,7 @@
-import React, { useEffect, useState, useRef, HTMLAttributes } from 'react';
+import React, { useState, useRef, HTMLAttributes } from 'react';
 import TodoItem from '../todoItem';
-import { Todo } from '../types/todo';
+import useTodosQuery from './services/useTodosQuery';
 import { StyledList } from './todoList.style';
-
-const fakeServerTodosData: Todo[] = [
-	{ id: 100, title: 'Learn React' },
-	{ id: 101, title: 'Learn TypeScript' }
-];
 
 interface TodoListProps extends HTMLAttributes<HTMLDivElement> {
 	username?: string;
@@ -16,28 +11,20 @@ interface TodoListProps extends HTMLAttributes<HTMLDivElement> {
 const TodoList = ({ username = 'No user', children, ...rest }: TodoListProps): JSX.Element => {
 	const [count, setCount] = useState(0);
 	const [todoTitle, setTodoTitle] = useState('');
-	const [todos, setTodos] = useState<Todo[]>([]);
 	const inputRef = useRef<HTMLInputElement | undefined>();
 
-	useEffect(() => {
-		const getFakeServerTodosData = async () => {
-			setTodos(fakeServerTodosData);
-		};
-
-		getFakeServerTodosData();
-	}, []);
+	const { isLoading, data: todos, addTodo } = useTodosQuery();
 
 	const handleAddTodo = () => {
 		if (todoTitle) {
 			setCount(count + 1);
-			const updatedTodos = [
-				...todos,
-				{
-					id: count,
-					title: todoTitle
-				}
-			];
-			setTodos(updatedTodos);
+
+			const updatedTodos = {
+				id: count,
+				title: todoTitle
+			};
+			addTodo(updatedTodos);
+
 			setTodoTitle('');
 			inputRef?.current?.focus();
 		}
@@ -55,7 +42,9 @@ const TodoList = ({ username = 'No user', children, ...rest }: TodoListProps): J
 				</button>
 			</div>
 
-			{todos.length ? (
+			{isLoading ? (
+				<p>Loading...</p>
+			) : todos.length ? (
 				<StyledList>
 					{todos.map(({ id, title }) => (
 						<TodoItem key={id} title={title} />

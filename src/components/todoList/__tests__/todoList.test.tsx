@@ -13,4 +13,6 @@ describe('Todo list', () => {
 
 		expect(usernameElement).toBeInTheDocument();
 	});
+
+	it('should render a list of todos correctly', () => {});
 });
