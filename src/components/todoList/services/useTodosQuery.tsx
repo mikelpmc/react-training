@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Todo } from '@/components/types/todo';
+import { Todo } from '@/types/todo';
 
 const fakeServerTodosData: Todo[] = [
 	{ id: 100, title: 'Learn React' },
