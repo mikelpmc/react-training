@@ -34,11 +34,11 @@ describe('Todo list', () => {
 		render(<TodoList>Test</TodoList>);
 
 		// const todosList = screen.getByRole('list');
-		// const todosItems = within(todosList).getAllByRole('listitem');
+		// const todosItems = within(todosList).getAllByRole('button');
 		// todosItems.map((todo, index) => expect(todo.textContent).toBe(fakeTodos[index].title));
 
-		expect(screen.getByRole('listitem', { name: /todo test 1/i })).toBeInTheDocument();
-		expect(screen.getByRole('listitem', { name: /todo test 2/i })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: /todo test 1/i })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: /todo test 2/i })).toBeInTheDocument();
 	});
 
 	it('should add a new todo to the list', () => {

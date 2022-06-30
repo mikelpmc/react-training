@@ -53,7 +53,7 @@ const TodoList = ({ username = 'No user', children, ...rest }: TodoListProps): J
 			) : todos.length ? (
 				<StyledList>
 					{todos.map(({ id, title }) => (
-						<TodoItem key={id} title={title} aria-label={title} />
+						<TodoItem key={id} title={title} />
 					))}
 				</StyledList>
 			) : (
